@@ -1,10 +1,58 @@
 {
-  "students": [
+  "journeys": [
     {
       "id": 1,
-      "name": "Alice",
-      "gpa": 3.8,
-      "department": "CS"
+      "destination": "Switzerland",
+      "description": "Breathtaking mountains, snow, and nature trails.",
+      "image": "https://images.pexels.com/photos/3586966/pexels-photo-3586966.jpeg"
+    },
+    {
+      "id": 2,
+      "destination": "Kenya",
+      "description": "Explore the savannah, wildlife and culture.",
+      "image": "https://images.pexels.com/photos/3985167/pexels-photo-3985167.jpeg"
+    },
+    {
+      "id": 3,
+      "destination": "Maldives",
+      "description": "Crystal waters, white sands, pure paradise.",
+      "image": "https://images.pexels.com/photos/210557/pexels-photo-210557.jpeg"
+    },
+    {
+      "id": 4,
+      "destination": "Japan",
+      "description": "Cherry blossoms and ancient temples await.",
+      "image": "https://images.pexels.com/photos/3274669/pexels-photo-3274669.jpeg"
+    },
+    {
+      "id": 5,
+      "destination": "Canada",
+      "description": "Great lakes, forests, and maple beauty.",
+      "image": "https://images.pexels.com/photos/93822/pexels-photo-93822.jpeg"
+    },
+    {
+      "id": 6,
+      "destination": "Italy",
+      "description": "Historic cities, vineyards and art treasures.",
+      "image": "https://images.pexels.com/photos/208745/pexels-photo-208745.jpeg"
+    },
+    {
+      "id": 7,
+      "destination": "New Zealand",
+      "description": "Hobbiton, glaciers, and jaw-dropping nature.",
+      "image": "https://images.pexels.com/photos/802024/pexels-photo-802024.jpeg"
+    },
+    {
+      "id": 8,
+      "destination": "Brazil",
+      "description": "Carnivals, beaches, and Amazon adventures.",
+      "image": "https://images.pexels.com/photos/1619563/pexels-photo-1619563.jpeg"
+    },
+    {
+      "id": 9,
+      "destination": "Iceland",
+      "description": "Volcanoes, glaciers, and northern lights.",
+      "image": "https://images.pexels.com/photos/733148/pexels-photo-733148.jpeg"
     }
   ]
 }

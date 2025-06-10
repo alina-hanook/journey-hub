@@ -1,0 +1,80 @@
+/* Home.css */
+
+.home-wrapper {
+  background-color: #f3f6f9;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: #007bff;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: white;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.search-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.search-input {
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  width: 300px;
+  font-size: 1rem;
+}
+
+.clear-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: #007bff;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.header p {
+  margin-top: 1rem;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.scenic-image-wrapper {
+  width: 100%;
+  overflow: hidden;
+  max-height: 450px;
+}
+
+.scenic-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.no-results {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 2rem;
+}
+
+.card-hover-effect {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.card-hover-effect:hover {
+  transform: scale(1.05);
+}

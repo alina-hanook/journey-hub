@@ -1,12 +1,24 @@
-# React + Vite
+# Journey Hub 🌍✈️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Journey Hub** is a travel blogging platform built with **React 18**, **Bootstrap 5**, and **JSON Server**. It allows users to explore global travel destinations, add their own reviews, and access service details like accommodation and transport—all in a clean and responsive interface.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🌐 **View Travel Destinations** with images and descriptions
+- ➕ **Add a Travel Review** (Title, Description, Image URL)
+- 🔍 **Search & Filter** journeys by destination name
+- 🧭 **Full CRUD Operations** with JSON Server
+- 🛠️ **React Router DOM** for navigation
+- 💬 **Contact Form** for user queries
+- 📄 **Service Details Page** for hotel, transport, food info
+- 🎯 **Business Constraints Implemented**:
+  - Prevent empty review submissions
+  - Limit image URL to valid links
+  - Show “No results found” if search has no matches
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📁 Folder Structure
+
