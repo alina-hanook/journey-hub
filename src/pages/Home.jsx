@@ -75,19 +75,30 @@ const Home = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Load added journeys from localStorage
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("journeys")) || [];
     setAddedJourneys(stored);
   }, [location]);
 
+  // Combine static and added journeys
   const allJourneys = [...staticJourneys, ...addedJourneys];
 
+  // Filter journeys by search term
   const filteredJourneys = allJourneys.filter((j) =>
     j.country.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Toggle price view
   const togglePrice = (id) => {
     setPriceVisible((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  // Delete added journey
+  const handleDelete = (id) => {
+    const updated = addedJourneys.filter((j) => j.id !== id);
+    setAddedJourneys(updated);
+    localStorage.setItem("journeys", JSON.stringify(updated));
   };
 
   return (
@@ -117,44 +128,73 @@ const Home = () => {
       {/* Cards */}
       <div className="container mt-4">
         <div className="row">
-          {filteredJourneys.map((journey) => (
-            <div key={journey.id} className="col-md-4 mb-4">
-              <div className="card h-100 shadow-sm">
-                <img
-                  src={journey.image}
-                  alt={journey.country}
-                  className="card-img-top"
-                  style={{ height: "200px", objectFit: "cover" }}
-                />
-                <div className="card-body d-flex flex-column justify-content-between">
-                  <div>
-                    <h5 className="card-title">{journey.country}</h5>
-                    <p className="card-text">{journey.description}</p>
-                  </div>
-                  <div className="text-center mt-3">
-                    <button
-                      onClick={() => togglePrice(journey.id)}
-                      style={{
-                        padding: "0.5rem 1rem",
-                        borderRadius: "6px",
-                        border: "none",
-                        backgroundColor: "#007bff",
-                        color: "white",
-                        cursor: "pointer",
-                      }}
-                    >
-                      View Price
-                    </button>
-                    {priceVisible[journey.id] && (
-                      <p style={{ marginTop: "0.5rem", fontWeight: "bold", fontSize: "1.1rem", color: "#28a745" }}>
-                        Price: {journey.price || "N/A"}
-                      </p>
+          {filteredJourneys.map((journey) => {
+            const isAdded = addedJourneys.some((j) => j.id === journey.id);
+            return (
+              <div key={journey.id} className="col-md-4 mb-4">
+                <div className="card h-100 shadow-sm">
+                  <img
+                    src={journey.image}
+                    alt={journey.country}
+                    className="card-img-top"
+                    style={{ height: "200px", objectFit: "cover" }}
+                  />
+                  <div className="card-body d-flex flex-column justify-content-between">
+                    <div>
+                      <h5 className="card-title">{journey.country}</h5>
+                      <p className="card-text">{journey.description}</p>
+                    </div>
+                    <div className="text-center mt-3">
+                      <button
+                        onClick={() => togglePrice(journey.id)}
+                        style={{
+                          padding: "0.5rem 1rem",
+                          borderRadius: "6px",
+                          border: "none",
+                          backgroundColor: "#007bff",
+                          color: "white",
+                          cursor: "pointer",
+                        }}
+                      >
+                        View Price
+                      </button>
+                      {priceVisible[journey.id] && (
+                        <p
+                          style={{
+                            marginTop: "0.5rem",
+                            fontWeight: "bold",
+                            fontSize: "1.1rem",
+                            color: "#28a745",
+                          }}
+                        >
+                          Price: {journey.price || "N/A"}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Delete Button (only for added journeys) */}
+                    {isAdded && (
+                      <div className="text-center mt-2">
+                        <button
+                          onClick={() => handleDelete(journey.id)}
+                          style={{
+                            padding: "0.4rem 1rem",
+                            borderRadius: "6px",
+                            border: "none",
+                            backgroundColor: "#dc3545",
+                            color: "white",
+                            cursor: "pointer",
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     )}
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Add Button */}
