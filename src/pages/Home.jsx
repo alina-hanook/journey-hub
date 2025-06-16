@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-// Sample journey data with prices added
-const allJourneys = [
+// Sample static journeys
+const staticJourneys = [
   {
     id: 1,
     country: "Switzerland",
@@ -35,7 +36,7 @@ const allJourneys = [
     country: "Canada",
     description: "Rocky Mountains and wilderness.",
     image: "https://us.images.westend61.de/0000837544l/canada-british-columbia-boya-lake-boya-lake-provincial-park-kanu-GUSF00371.jpg",
-    price: "$1700",  // Added Canada price here
+    price: "$1700",
   },
   {
     id: 6,
@@ -69,65 +70,51 @@ const allJourneys = [
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [priceVisible, setPriceVisible] = useState({}); // Track which prices to show
+  const [priceVisible, setPriceVisible] = useState({});
+  const [addedJourneys, setAddedJourneys] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("journeys")) || [];
+    setAddedJourneys(stored);
+  }, [location]);
+
+  const allJourneys = [...staticJourneys, ...addedJourneys];
 
   const filteredJourneys = allJourneys.filter((j) =>
     j.country.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const togglePrice = (id) => {
-    setPriceVisible((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
+    setPriceVisible((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   return (
     <div style={{ backgroundColor: "#f3f6f9" }}>
-      {/* Main Heading */}
-      <div
-        style={{
-          backgroundColor: "#007bff",
-          padding: "2rem 1rem",
-          textAlign: "center",
-          color: "white",
-        }}
-      >
-        <h1 style={{ fontSize: "2.5rem", fontWeight: "bold" }}>
-          TRAVEL IN YOUR OWN WAY
-        </h1>
+      {/* Heading */}
+      <div style={{ backgroundColor: "#007bff", padding: "2rem 1rem", textAlign: "center", color: "white" }}>
+        <h1 style={{ fontSize: "2.5rem", fontWeight: "bold" }}>TRAVEL IN YOUR OWN WAY</h1>
         <input
           type="text"
           placeholder="Search journeys..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          style={{
-            padding: "0.5rem 1rem",
-            borderRadius: "8px",
-            border: "none",
-            width: "300px",
-            marginTop: "1rem",
-          }}
+          style={{ padding: "0.5rem 1rem", borderRadius: "8px", border: "none", width: "300px", marginTop: "1rem" }}
         />
-        <p
-          style={{
-            marginTop: "1rem",
-            fontStyle: "italic",
-            fontSize: "1.2rem",
-          }}
-        >
+        <p style={{ marginTop: "1rem", fontStyle: "italic", fontSize: "1.2rem" }}>
           "Jobs fill your pocket, but adventures fill your soul."
         </p>
       </div>
 
-      {/* Full-width Scenic Image */}
+      {/* Hero Image */}
       <img
         src="https://us.images.westend61.de/0001138352pw/happy-man-walking-on-trail-on-a-hiking-trip-in-the-mountains-BSZF00981.jpg"
-        alt="Adventure Girl"
+        alt="Adventure"
         style={{ width: "100%", height: "90vh", objectFit: "cover" }}
       />
 
-      {/* Cards Grid */}
+      {/* Cards */}
       <div className="container mt-4">
         <div className="row">
           {filteredJourneys.map((journey) => (
@@ -144,7 +131,6 @@ const Home = () => {
                     <h5 className="card-title">{journey.country}</h5>
                     <p className="card-text">{journey.description}</p>
                   </div>
-
                   <div className="text-center mt-3">
                     <button
                       onClick={() => togglePrice(journey.id)}
@@ -159,16 +145,8 @@ const Home = () => {
                     >
                       View Price
                     </button>
-
                     {priceVisible[journey.id] && (
-                      <p
-                        style={{
-                          marginTop: "0.5rem",
-                          fontWeight: "bold",
-                          fontSize: "1.1rem",
-                          color: "#28a745",
-                        }}
-                      >
+                      <p style={{ marginTop: "0.5rem", fontWeight: "bold", fontSize: "1.1rem", color: "#28a745" }}>
                         Price: {journey.price || "N/A"}
                       </p>
                     )}
@@ -177,6 +155,17 @@ const Home = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Add Button */}
+        <div className="text-center mt-5">
+          <button
+            onClick={() => navigate("/add")}
+            className="btn btn-success"
+            style={{ padding: "0.7rem 2rem", fontSize: "1rem" }}
+          >
+            + Add Journey
+          </button>
         </div>
       </div>
     </div>

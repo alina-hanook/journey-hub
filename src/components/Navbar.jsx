@@ -20,13 +20,13 @@ const Navbar = () => {
         <ul className="navbar-nav ms-auto">
           <li className="nav-item">
             <NavLink to="/" className={linkStyle}>Home</NavLink>
-          </li>
+          </li>  <li className="nav-item">
+    <NavLink to="/add" className={linkStyle}>Add Journey</NavLink>
+  </li>
           <li className="nav-item">
-            <NavLink to="/add" className={linkStyle}>Review</NavLink>
+            <NavLink to="/review" className={linkStyle}>Review</NavLink>
           </li>
-          <li className="nav-item">
-  <a className="nav-link" href="/contact">Contact</a>
-</li>
+  <NavLink to="/contact" className={linkStyle}>Contact</NavLink>
           <li className="nav-item">
   <NavLink to="/services" className={linkStyle}>Services</NavLink>
 </li>

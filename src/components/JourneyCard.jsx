@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 
 const JourneyCard = ({ journey }) => {
@@ -28,5 +27,6 @@ const JourneyCard = ({ journey }) => {
 };
 
 export default JourneyCard;
+
 
 

@@ -18,4 +18,3 @@ const Filterbar = ({ onSearch }) => {
 };
 
 export default Filterbar;
-

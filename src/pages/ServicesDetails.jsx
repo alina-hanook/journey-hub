@@ -1,5 +1,3 @@
-
-
 const ServiceDetails = () => {
   return (
     <div style={{ maxWidth: 800, margin: "2rem auto", padding: "0 1rem" }}>
@@ -15,7 +13,7 @@ const ServiceDetails = () => {
         <li>Luxury Resort Stay: <strong>Starts at $150/night</strong></li>
       </ul>
 
-      <h4 className="text-secondary fw-semibold mt-4 mb-2">🍽️ Food & Beverages</h4>
+      <h4 className="text-secondary fw-semibold mt-4 mb-2">🍽 Food & Beverages</h4>
       <ul>
         <li>Breakfast Buffet: <strong>$10/person</strong></li>
         <li>Lunch/Dinner (Continental & Local): <strong>$20–$30/person</strong></li>
@@ -44,5 +42,3 @@ const ServiceDetails = () => {
 };
 
 export default ServiceDetails;
-
-
